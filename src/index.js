@@ -32,6 +32,7 @@ module.exports = (userOptions = {}) => {
   const app = metricsApp || express();
   app.disable('x-powered-by');
 
+  if (options.defaultLabels) Prometheus.register.setDefaultLabels(options.defaultLabels)
   const requestDuration = requestDurationGenerator(options.requestDurationBuckets);
 
   /**
